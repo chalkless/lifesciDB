@@ -22,7 +22,7 @@ while (defined ($line_in = <IN>)) {
     @ele = split(/\|/, $line_in);
 
     @out = map { $_ =~ s/^[\t\s]*(.*)/$1/g;
-		 $_ =~ s/([^\s\t]*)[\t\s]*/$1/g;
+		 $_ =~ s/([^\s\t]*)[\t\s]*$/$1/g;
 		 $_ } @ele;
     print join("\t", @out)."\n";
 }
