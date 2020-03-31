@@ -45,3 +45,25 @@ $ cut -f 4 names.tab| sort | uniq -c | sort -rn
  227 blastname
  169 teleomorph
 ```
+
+### names.dmp の中身
+```
+tax_id                                  -- the id of node associated wit
+name_txt                                -- name itself
+unique name                             -- the unique variant of this na
+name class                              -- (synonym, common name, ...)
+```
+
+### rankedlineage.dmp の中身
+```
+tax_id                                  -- node id
+tax_name                                -- scientific name of the organism
+species                                 -- name of a species (coincide with organism name for species-level nodes)
+genus                                   -- genus name when available
+family                                  -- family name when available
+order                                   -- order name when available
+class                                   -- class name when available
+phylum                                  -- phylum name when available
+kingdom                                 -- kingdom name when available
+superkingdom                            -- superkingdom (domain) name when available
+```
