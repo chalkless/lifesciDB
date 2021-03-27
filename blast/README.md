@@ -46,4 +46,14 @@ $ makeblastdb -in original.fasta -out blast.dbname -dbtype [nucl|prot] -hash_ind
 $ blastdbcmd -db blast.db -entry_batch target.ids.txt | tee target.fasta
 ```
 
+- UniProt のヘッダから遺伝子名を抜き出すなど
+```
+[キモ]
+    $name_out =~ s/ (SV|PE|GN|OX)=.*//g;
+    $name_out =~ s/OS=(.*)//;
+    $taxon = $1;
+```
+
+
+
 
