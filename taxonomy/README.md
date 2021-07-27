@@ -3,6 +3,7 @@
 ## データの取得
 - ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz を落として解凍する
 - names.dmp と rankedlineage.dmp を使う
+- nodes.dmpも?
 - フォーマットが変態的
 
 ```
@@ -67,3 +68,32 @@ phylum                                  -- phylum name when available
 kingdom                                 -- kingdom name when available
 superkingdom                            -- superkingdom (domain) name when available
 ```
+### nodes.dmp の中身
+```
+nodes.dmp
+---------
+This file represents taxonomy nodes. The description for each node includes 
+the following fields:
+
+        tax_id                                  -- node id in GenBank taxonomy database
+        parent tax_id                           -- parent node id in GenBank taxonomy database
+        rank                                    -- rank of this node (superkingdom, kingdom, ...) 
+        embl code                               -- locus-name prefix; not unique
+        division id                             -- see division.dmp file
+        inherited div flag  (1 or 0)            -- 1 if node inherits division from parent
+        genetic code id                         -- see gencode.dmp file
+        inherited GC  flag  (1 or 0)            -- 1 if node inherits genetic code from parent
+        mitochondrial genetic code id           -- see gencode.dmp file
+        inherited MGC flag  (1 or 0)            -- 1 if node inherits mitochondrial gencode from parent
+        GenBank hidden flag (1 or 0)            -- 1 if name is suppressed in GenBank entry lineage
+        hidden subtree root flag (1 or 0)       -- 1 if this subtree has no sequence data yet
+        comments                                -- free-text comments and citations
+        plastid genetic code id                 -- see gencode.dmp file
+        inherited PGC flag  (1 or 0)            -- 1 if node inherits plastid gencode from parent
+        specified_species                       -- 1 if species in the node's lineage has formal name
+        hydrogenosome genetic code id           -- see gencode.dmp file
+        inherited HGC flag  (1 or 0)            -- 1 if node inherits hydrogenosome gencode from parent
+```
+
+
+
