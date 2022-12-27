@@ -96,8 +96,8 @@ the following fields:
 ```
 
 ## 階層構造を得る
--　目、科、属など決まった階層に関してはrankedlineage.dmpに記載される
--　上のような決まった階層に挟まる階層も含めてについてはfullnamelineage.dmpに記載される
+- 目、科、属など決まった階層に関してはrankedlineage.dmpに記載される
+- 上のような決まった階層に挟まる階層も含めてについてはfullnamelineage.dmpに記載される
 
 ### fullnamelineage.dmpの中身
 ```
