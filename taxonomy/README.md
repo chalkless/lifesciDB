@@ -95,5 +95,21 @@ the following fields:
         inherited HGC flag  (1 or 0)            -- 1 if node inherits hydrogenosome gencode from parent
 ```
 
+## 階層構造を得る
+-　目、科、属など決まった階層に関してはrankedlineage.dmpに記載される
+-　上のような決まった階層に挟まる階層も含めてについてはfullnamelineage.dmpに記載される
+
+### fullnamelineage.dmpの中身
+```
+fullnamelineage.dmp
+----------------
+Full name lineage file fields:
+
+        tax_id                                  -- node id
+        tax_name                                -- scientific name of the organism
+        lineage                                 -- sequence of sncestor names separated by semicolon ';' denoting nodes' ancestors starting from the most distant one and ending with the immediate one
+```
+
+
 
 
