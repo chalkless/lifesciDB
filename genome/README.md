@@ -65,3 +65,7 @@ chalkless@blenny:/data/taxonomy/230626$ grep "Catajapyx aquilonaris" rankedlinea
 ```
 $ perl -F"\t" -lane 'print $_ if $F[5] ne ""' genomes.insect.arranged.230705.tab > genomes.insect.for_graph.230705.tab
 ```
+
+## 可視化
+- Google Colabで
+https://github.com/chalkless/lifesciDB/blob/master/genome/insect_genome.ipynb
