@@ -35,8 +35,10 @@ export NCBI_API_KEY=unique_api_key
 - NCBI_API_KEYの取得法： https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
 - NCBI account にログインする。アカウントがないときはORCIDでもGoogleでもログインできる
 - My NCBIが開く。左上の自分の名前をクリックしてAccount Settings
-- けど 500　internal server error が出るし。。。
-- 本当は Create an API Key というボタンが出るらしい
+- 500　internal server error が出ることもあるが、しばらくして再度トライする
+- NCBI Account Settingのページの一番下にAPI Key Managementのセクションがあり、Create an API Key というボタンが出る。クリックするとAPI_KEYが作られる
+- 参考までにeutilsで`api_key=XXX`をつけると１秒間に3回のリクエストが10回まで拡張される
+  - BioPythonで指定するとき：https://github.com/chalkless/biopython_my/blob/master/biopyPubmed.md
 
 ## 使い方
 ### PubMedからの文献のダウンロード
