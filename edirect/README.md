@@ -6,6 +6,12 @@
   - たとえば、edirect-install.sh と install-edirect.sh の両方があったり。どっちやねん
 
 ## インストール
+### Ubuntuの場合
+```
+$ sudo apt install ncbi-entrez-direct
+```
+
+### 自分でインストールする場合
 - ドキュメントには以下のように書いてある
 ```
 # example 1
