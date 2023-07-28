@@ -27,6 +27,17 @@ $ sh -c "$(wget -q https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edir
 - install-edirect.shを見たところ、`cd ~`がハードコードされていたのでここを書き換えて自分の好みのディレクトリにインストールされるようにする（ここで指定したディレクトリにedirectのディレクトリが作られてそこにインストールされる）
 - pathを通すか訊いてくるので、そこは素直にお任せすることとする
 
+## 使う前に
+- 基本的には esearch | efetch （実際は引数がつく）のようにパイプでつなぐが、最高のパフォーマンスを得るにはNCBI_API_KEYを取得して.bash_profileや.zshrcに設定しておく（ https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/README より）
+```
+export NCBI_API_KEY=unique_api_key
+```
+- NCBI_API_KEYの取得法： https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/
+- NCBI account にログインする。アカウントがないときはORCIDでもGoogleでもログインできる
+- My NCBIが開く。左上の自分の名前をクリックしてAccount Settings
+- けど 500　internal server error が出るし。。。
+- 本当は Create an API Key というボタンが出るらしい
+
 ## 使い方
 ### PubMedからの文献のダウンロード
 ```
