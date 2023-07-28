@@ -11,6 +11,11 @@
 $ sudo apt install ncbi-entrez-direct
 ```
 
+### condaの場合
+```
+$ conda install entrez-direct
+```
+
 ### 自分でインストールする場合
 - ドキュメントには以下のように書いてある
 ```
