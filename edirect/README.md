@@ -27,4 +27,28 @@ $ sh -c "$(wget -q https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edir
 - install-edirect.shを見たところ、`cd ~`がハードコードされていたのでここを書き換えて自分の好みのディレクトリにインストールされるようにする（ここで指定したディレクトリにedirectのディレクトリが作られてそこにインストールされる）
 - pathを通すか訊いてくるので、そこは素直にお任せすることとする
 
-
+## 使い方
+### PubMedからの文献のダウンロード
+```
+# 検索語を入れてその文献をXMLでダウンロード
+$ esearch -db pubmed -query "opsin gene conversion" | efetch -format xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2023//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_230101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM" IndexingMethod="Curated">
+      <PMID Version="1">36707759</PMID>
+      <DateCompleted>
+        <Year>2023</Year>
+        <Month>02</Month>
+        <Day>03</Day>
+      </DateCompleted>
+      ...
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">3270843</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>
+```
