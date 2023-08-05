@@ -10,7 +10,7 @@ $ lftp -e 'get /sra/reports/Metadata/SRA_Accessions.tab' ftp.ncbi.nlm.nih.gov
 
 
 |Label|Study|Experiment|Run|Sample|
-|-|-|-|-|-|-|
+|-|-|-|-|-|
 |Accession|SRP072219|ERX1858811|ERR4799434|SRS8633180|
 |Submission|-|-|-|-|-|
 |Status|live|live|live|live|
