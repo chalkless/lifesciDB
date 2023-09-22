@@ -31,6 +31,7 @@ trad. (traditional)とは、歴々 収集されてきた塩基配列・アミノ
 
 ## データの一括ダウンロード
 ```
+# lftp編
 $ cd /data
 $ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob "gbpri*" --include-glob "gbrod*" genbank ./genbank; quit' ftp.ncbi.nlm.nih.gov
 ```
@@ -39,7 +40,36 @@ $ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob
 - `--just-print` をつけると画面表示だけされる
 
 
+```
+# rsync編
+$ cd /data/genbank
+$ rsync -avz rsync://ftp.ncbi.nlm.nih.gov:/genbank/ ./ --include=gbbct100?.seq.gz --exclude=*
 
+Warning Notice!
+
+You are accessing a U.S. Government information system which includes this
+computer, network, and all attached devices. This system is for
+Government-authorized use only. Unauthorized use of this system may result in
+disciplinary action and civil and criminal penalties. System users have no
+expectation of privacy regarding any communications or data processed by this
+system. At any time, the government may monitor, record, or seize any
+communication or data transiting or stored on this information system.
+
+-------------------------------------------------------------------------------
+
+Welcome to the NCBI rsync server.
+
+
+receiving incremental file list
+gbbct1000.seq.gz
+...
+gbbct1009.seq.gz
+
+sent 247 bytes  received 1,327,000,187 bytes  4,816,698.49 bytes/sec
+total size is 1,326,446,303  speedup is 1.00
+```
+- include と exclude　の順番を変えないこと。前から解釈されるので、逆にすると何もダウンロードされない（if include=XXX then XXX; elsif exclude=XXX then XXX ...　という解釈だと思えば良い）
+- rsync://のあたりはanonymousでつなぐことと思えば良い
 
 
 
