@@ -28,23 +28,11 @@ $ head names.dmp| ruby -lane 'p $_'
 
 ## 名称 → TaxonID
 - Scientific Name以外にSynonymがあってややこしい。
-- Synonymはnames.dmpにしか出てこないようだ（以下はtab変換されたファイルで処理している）
+- Synonymはnames.dmpにしか出てこないようだ
+
 ```
-$ cut -f 4 names.tab| sort | uniq -c | sort -rn
-2224096 scientificname
-470951 authority
-186520 synonym
-50379 includes
-29457 genbankcommonname
-26646 equivalentname
-14471 commonname
-1164 acronym
-1105 genbanksynonym
- 534 in-part
- 480 genbankacronym
- 291 anamorph
- 227 blastname
- 169 teleomorph
+$ grep "Bacillus endorhythmos" *.dmp
+names.dmp:1396  |       Bacillus endorhythmos   |               |       synonym|
 ```
 
 ### names.dmp の中身
