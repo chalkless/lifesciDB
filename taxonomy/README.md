@@ -55,6 +55,13 @@ unique name                             -- the unique variant of this na
 name class                              -- (synonym, common name, ...)
 ```
 
+- unique name: Bacillus はbacteriaとナナフシで使われているので、どちらか、とか。
+
+```
+1386    Bacillus        Bacillus <firmicutes>   scientific name
+55087   Bacillus        Bacillus <walking sticks>       scientific name
+```
+
 ```
 $ cut -f 4 names.tab | sort | uniq -c | sort -rn
 2512652 scientific name
