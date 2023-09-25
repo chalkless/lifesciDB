@@ -55,6 +55,21 @@ unique name                             -- the unique variant of this na
 name class                              -- (synonym, common name, ...)
 ```
 
+```
+$ cut -f 4 names.tab | sort | uniq -c | sort -rn
+2512652 scientific name
+ 675332 authority
+ 247536 synonym
+  76045 includes
+  57465 equivalent name
+  30353 genbank common name
+  14647 common name
+   2082 acronym
+    667 in-part
+    230 blast name
+     25 genbank acronym
+```
+
 ### rankedlineage.dmp の中身
 ```
 tax_id                                  -- node id
@@ -94,6 +109,30 @@ the following fields:
         hydrogenosome genetic code id           -- see gencode.dmp file
         inherited HGC flag  (1 or 0)            -- 1 if node inherits hydrogenosome gencode from parent
 ```
+
+### typematerial.dmp の中身
+```
+        tax_id                                  -- node id
+        tax_name                                -- organism name type material is assigned to
+        type                                    -- type material type (see typeoftype.dmp)
+        identifier                              -- identifier in type material collection
+```
+
+```
+$ cut -f 3 typematerial.tab | sort | uniq -c | sort -rn 
+  87081 type strain
+  34874 holotype
+  16816 type material
+  14423 culture from holotype
+  12868 paratype
+   3206 isotype
+   2783 culture from type material
+   1828 syntype
+   1092 culture from epitype
+   1071 lectotype
+        ...
+```
+
 
 ## 階層構造を得る
 - 目、科、属など決まった階層に関してはrankedlineage.dmpに記載される
