@@ -38,6 +38,7 @@ $ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob
 - リモートとローカルが同じ名前でかつ/で終わらない時だけ中身がコピーされ、他はgenbankディレクトリができてその中にコピーされるので、1つ上に移動してlftpをかけている（ローカル側が/で終わらない時は中身がコピーされる）
 - サブディレクトリも同期しようとするので -r　(--no-recursion) つける
 - `--just-print` をつけると画面表示だけされる
+- parallel で並列コピーされるし、経験的にこちらが段違いで早い
 
 
 ```
