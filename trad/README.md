@@ -73,4 +73,8 @@ total size is 1,326,446,303  speedup is 1.00
 - rsync://のあたりはanonymousでつなぐことと思えば良い
 
 
+## release noteのダウンロード
 
+```
+$ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose genbank/release.notes/ ./; quit' ftp.ncbi.nlm.nih.gov
+```
