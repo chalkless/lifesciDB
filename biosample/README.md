@@ -87,3 +87,20 @@ $ python3 /share/bin/bio/parse.biosample.py -f ddbj_biosample_set.xml | sort | u
  442332 Models
  442332 Owner
 ```
+
+```
+$ python3 splitxml.1.py -f /work/museomics2310/biosample/biosample_set.xml -t BioSample -n 100000
+
+$ for nm in ncbi_biosample_divided/*.xml; do echo $nm; /share/bin/bio/parse.biosample.py -f $nm >> biosample.tag1st.231127.txt; done
+
+$ sort biosample.tag1st.231127.txt  | uniq -c
+35916957 Attributes
+  13994 Curation
+35916957 Description
+35916957 Ids
+18188296 Links
+35916957 Models
+35916957 Owner
+35916957 Package
+35916957 Status
+```
