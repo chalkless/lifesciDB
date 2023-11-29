@@ -104,3 +104,34 @@ $ sort biosample.tag1st.231127.txt  | uniq -c
 35916957 Package
 35916957 Status
 ```
+
+### Ids の中身
+
+```
+# NCBI
+  <Ids>
+    <Id db="BioSample" is_primary="1">SAMN00000002</Id>
+    <Id db="WUGSC" db_label="Sample name">19655</Id>
+    <Id db="SRA">SRS000002</Id>
+  </Ids>
+
+# DDBJ
+                <Ids>
+                        <Id namespace="BioSample" is_primary="1">SAMD00000001</Id>
+                </Ids>
+```
+
+```
+$ python3 /share/bin/bio/parse.biosample.py -f ./ncbi_biosample_divided/biosample_set.001.xml | grep "[db]" | sort | uniq -c | sort -rn | head
+  81451 [db]    dbGaP
+  74180 [db]    SRA
+   4653 [db]    GEO
+   1728 [db]    Coriell
+   1617 [db]    BI
+   1445 [db]    HapMap
+   1292 [db]    1000G
+    796 [db]    MBL
+    518 [db]    UMIGS
+    439 [db]    DOE Joint Genome Institute
+    ...
+```
