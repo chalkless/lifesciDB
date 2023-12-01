@@ -16,6 +16,7 @@ biosample_set.xml.gz    2023-11-23 08:22  2.5G
 ```
 
 - DDBJではNCBIのファイルがミラーされている（と信じている）
+- NCBIのファイルにDDBJのデータも含まれていたので、biosample_set.xml.gzをparseすればddbj_biosample_set.xml.gzの分も処理できる。（下にあるように構造が違うので）
 
 
 ## BioSampleデータの中身
