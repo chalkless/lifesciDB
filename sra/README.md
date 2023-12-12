@@ -31,3 +31,22 @@ $ lftp -e 'get /sra/reports/Metadata/SRA_Accessions.tab' ftp.ncbi.nlm.nih.gov
 |BioSample|-|SAMEA27640168|SAMEA7528020|SAMN18612635|
 |BioProject|PRJNA316098|PRJEB18650|PRJEB41116|-|
 |ReplacedBy|-|-|-|-|
+
+
+## NGSデータの処理
+- 以前は .fastq　での配布が主流だったかもしれないが、今は .sra　での配布（な気がする）
+- .sra　を処理するにはsra-toolkitが必要
+```
+# Ubuntuの場合
+$ sudo apt install sra-toolkit
+```
+
+- 前はfastq-dumpだったのだが、最近はマルチスレッド化したfasterq-dumpを用いる
+```
+# ダウンロードと展開
+$ fasterq-dump SRR6504026
+# .sraを自力でダウンロードして展開だけやってもよい
+$ fasterq-dump SRR650402.sra
+```
+
+
