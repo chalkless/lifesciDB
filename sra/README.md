@@ -49,4 +49,11 @@ $ fasterq-dump SRR6504026
 $ fasterq-dump SRR650402.sra
 ```
 
-
+## Taxonomy Analysis
+- SRA Run Browser にTaxonomy Analysisなる、当該SRA runデータがどの生物種に対応しているかの階層構造＋割合の図が出る
+- 例：https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=DRR514089&display=analysis
+- https://www.ncbi.nlm.nih.gov/sra/docs/sra-taxonomy-analysis-tool/
+- このあたりについて紹介したNAR DB issueの論文：https://academic.oup.com/nar/article/50/D1/D387/6438001
+- やっている解析についての論文：https://pubmed.ncbi.nlm.nih.gov/34544477/
+- SQLをたたいて、ある生物種が含まれるSRAデータを検索できるのだとか：https://qiita.com/satoshi_kawato/items/896771fa6fae5452940a
+- SQLをたたいて、の部分の詳細仕様：https://www.ncbi.nlm.nih.gov/sra/docs/sra-cloud-based-taxonomy-analysis-table/
