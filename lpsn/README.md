@@ -7,6 +7,7 @@
 - サイトの左カラムに Downloads とある
 - ログイン画面が出る。Googleアカウントでログインできる
 - https://lpsn.dsmz.de/downloads
+- ファイルへのリンクがあるが、そのURLでwgetしてもログインしろと言われる
 - 最新の日付でCSVとExcel形式（と称するもの）のファイルがある
   - lpsn_gss_2024-04-10.csv
   - lpsn_gss_2024-04-10.xls
