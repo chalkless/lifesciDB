@@ -1,3 +1,6 @@
+# NCBI Genome
+- これまであったNCBI Genome　https://www.ncbi.nlm.nih.gov/genome は終了。NCBI Assemblyと一緒になってNCBI Datasets　のゲノムセクション https://www.ncbi.nlm.nih.gov/datasets/genome/ に移行した(２０２４年６月)。
+
 # 昆虫ゲノムで目ごとにゲノムサイズを可視化してみる
 
 ## NCBI　Genomeからゲノムサイズデータをダウンロード
