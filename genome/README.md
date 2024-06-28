@@ -1,74 +1,60 @@
 # NCBI Genome
 - これまであったNCBI Genome　https://www.ncbi.nlm.nih.gov/genome は終了。NCBI Assemblyと一緒になってNCBI Datasets　のゲノムセクション https://www.ncbi.nlm.nih.gov/datasets/genome/ に移行した(2024年6月)。
 
-# 昆虫ゲノムで目ごとにゲノムサイズを可視化してみる
+## FTPサイト
+- https://ftp.ncbi.nlm.nih.gov/genomes/
 
-## NCBI　Genomeからゲノムサイズデータをダウンロード
-- [NCBI - Genome Information by Organism](https://ncbi.nlm.nih.gov/genome/browse#!/overview/)ページでFilterからAnimal　>　Insects　と絞り込み、Downloadボタンからデータをダウンロードする。（2,266 entries as of 23/07/05）
-- genomes.insect.230705.csv として保存
-- CSVからタブ区切りに変換
+## 微生物のゲノム
+- https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=297 (2024/6/28)
+![NCBI Genome画面](../images/ncbi_genome.capture.Hthermo.png)
+- Assembly IDとGenBankとRefSeqとある。
+   - Assembly ID：ASM357421v1
+   - RefSeq：GCF_003574215.1
+   - GenBank：GCA_003574215.1 （よく見たら、GCFとGCAの後ろは同じ数字だ）
+- FTPサイトのデータ例：https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/Hydrogenophilus_thermoluteolus/
+- FTPサイトにもgenbankとrefseqディレクトリがあって、各々の情報が入っている
+   - assembly_summary_(refseq|genbank).txtとassembly_summary_(refseq|genbank)_historical.txt があって、概略がまとまっているのかと思う。
+   - 中身については https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt を参考のこと
+- その各々に、bacteriaやfungiのディレクトリが切られている。
+- その中に学名ごとにディレクトリが切られている（多すぎてなかなか表示されない）
+- 中身
 ```
-$ python3 csv2tab.py genomes.insect.230705.csv
-```
-- joinするためにsortしておく
-```
-$ sort genomes.insect.230705.tab > genomes.insect.sorted.230705.tab
-```
-
-## NCBI　Taxonomyデータの加工
-- 目・科・属などのデータはrankedlineage.dmpに書かれている。
-- .dmpから.tabに変換（.dmpは区切り文字が | な上に余計なスペース（タブ）が入っている）
-```
-$ taxonomy.dmp2tab.pl rankedlineage.dmp > rankedlineage.tab
-```
-- 昆虫データだけに絞り込んで、名前をアルファベット順にsort
-```
-$ perl -F"\t" -lane 'print $_ if $F[6] eq "Insecta"' rankedlineage.tab | sort -k 2 > rankedlineage.insecta.sorted.tab
-```
-- 不確定な名前は ' ' で囲われていることに注意
-
-## ゲノムデータとTaxonomyデータのガッチャンコ
-```
-$ join -1 1 -2 2 -a 1 -t "  " -o 2.1,1.1,2.3,2.4,2.5,2.6,2.7,1.3 genomes.insect.sorted.230705.tab /data/taxonomy/230626/rankedlineage.insecta.sorted.tab > genomes.insect.arranged.230705.tab
+Parent Directory                               -   
+all_assembly_versions/    2024-06-27 11:32    -   
+latest_assembly_versions/ 2024-06-27 11:32    -   
+representative/           2024-06-26 21:39    -   
+annotation_hashes.txt     2024-06-25 18:26  866   
+assembly_summary.txt      2024-06-25 18:59  2.1K  
 ```
 ```
-$ cut -f 6 genomes.insect.arranged.230705.tab | sort | uniq -c | sort -rn | head
-   1064 Lepidoptera
-    438 Diptera
-    338 Hymenoptera
-    169 Coleoptera
-     88 Hemiptera
-     54
-     35 Trichoptera
-     15 Orthoptera
-     13 Phasmatodea
-      9 Plecoptera
+# Assemblyごとの中身
+Parent Directory                                                              -   
+GCF_003574215.1_ASM357421v1/                             2024-06-27 02:46    -   
+GCF_019448605.1_ASM1944860v1/                            2024-06-27 05:20    -   
+GCF_030268845.1_ASM3026884v1/                            2024-06-27 09:23    -   
 ```
-- 54行分が分類群がアサインされてない
 ```
-$ perl -F"\t" -lane 'print $_ if $F[5] eq ""' genomes.insect.arranged.230705.tab | sort > genomes.insect.nonassigned.230705.tab
-$ join -j 2 -t "    " -o 2.7 genomes.insect.nonassigned.230705.tab /data/taxonomy/230626/rankedlineage.sorted.tab | sort | uniq -c | sort -rn
-     50 Collembola     # トビムシ目
-      3
-```
-- 空白の3行は
-```
-$ join -j 2 -t "    " -o 2.2,2.7 genomes.insect.nonassigned.230705.tab /data/taxonomy/230626/rankedlineage.sorted.tab | perl -F"\t" -lane 'print $_ if $F[1] eq ""'
-Campodea augens
-Catajapyx aquilonaris
-unclassified Hexapoda
-$ grep "Campodea augens" rankedlineage.tab 
-438502  Campodea augens         Campodea        Campodeidae     Diplura        Arthropoda       Metazoa Eukaryota
-2065805 Campodea augens associated virus 1                                     Viruses
-chalkless@blenny:/data/taxonomy/230626$ grep "Catajapyx aquilonaris" rankedlineage.tab
-438503  Catajapyx aquilonaris           Catajapyx       Japygidae       DipluraArthropoda       Metazoa Eukaryota
-```
-- Diplura = コムシ目
-- ということで、空白のものは無視して良さそうなので元ファイルから削っておく
-```
-$ perl -F"\t" -lane 'print $_ if $F[5] ne ""' genomes.insect.arranged.230705.tab > genomes.insect.for_graph.230705.tab
+# 各ディレクトリの中身
+Parent Directory                                                                             -   
+GCF_003574215.1_ASM357421v1_ani_contam_ranges.tsv                       2024-01-14 02:05   38K  
+GCF_003574215.1_ASM357421v1_ani_report.txt                              2024-01-14 02:05  1.9K  
+GCF_003574215.1_ASM357421v1_assembly_report.txt                         2022-08-30 10:37  1.5K  
+GCF_003574215.1_ASM357421v1_assembly_stats.txt                          2021-12-16 17:44  6.7K  
+GCF_003574215.1_ASM357421v1_cds_from_genomic.fna.gz                     2024-02-13 09:28  737K  
+GCF_003574215.1_ASM357421v1_feature_count.txt                           2024-02-13 09:28  1.1K  
+GCF_003574215.1_ASM357421v1_feature_table.txt.gz                        2024-02-13 09:28  102K  
+GCF_003574215.1_ASM357421v1_genomic.fna.gz                              2020-12-18 23:51  653K  
+GCF_003574215.1_ASM357421v1_genomic.gbff.gz                             2024-02-13 09:28  1.6M  
+GCF_003574215.1_ASM357421v1_genomic.gff.gz                              2024-02-13 09:28  191K  
+GCF_003574215.1_ASM357421v1_genomic.gtf.gz                              2024-02-13 09:28  237K  
+GCF_003574215.1_ASM357421v1_protein.faa.gz                              2024-02-13 09:28  460K  
+GCF_003574215.1_ASM357421v1_protein.gpff.gz                             2024-02-13 09:28  1.2M  
+GCF_003574215.1_ASM357421v1_rna_from_genomic.fna.gz                     2022-12-25 09:56  5.0K  
+GCF_003574215.1_ASM357421v1_translated_cds.faa.gz                       2024-02-13 09:28  526K  
+README.txt                                                              2024-04-11 16:11   54K  
+annotation_hashes.txt                                                   2024-02-13 09:28  410   
+assembly_status.txt                                                     2024-06-27 02:46   14   
+md5checksums.txt                                                        2024-02-13 09:28  1.1K  
+uncompressed_checksums.txt                                              2024-06-12 01:58  698   
 ```
 
-## 可視化
-- Google Colabで
-https://github.com/chalkless/lifesciDB/blob/master/genome/insect_genome.ipynb
