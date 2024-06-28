@@ -65,13 +65,18 @@ GCF_003574215.1 93.07   GCA_019049855.1 86.47   type    Hydrogenophilus thiooxid
 
 #### datasets summary taxon
 ```
-/work/ncbi_datasets$ /share/local/ncbi/ncbi-datasets/bin/datasets summary taxonomy taxon "Hydrogenophilus thermoluteolus"
+$ datasets summary taxonomy taxon "Hydrogenophilus thermoluteolus"
 {"reports": [{"query":["Hydrogenophilus thermoluteolus"],"taxonomy":{"classification":{"class":{"id":2008785,"name":"Hydrogenophilia"},"family":{"id":206349,"name":"Hydrogenophilaceae"},"genus":{"id":70774,"name":"Hydrogenophilus"},"order":{"id":119069,"name":"Hydrogenophilales"},"phylum":{"id":1224,"name":"Pseudomonadota"},"species":{"id":297,"name":"Hydrogenophilus thermoluteolus"},"superkingdom":{"id":2,"name":"Bacteria"}},"counts":[{"count":5,"type":"COUNT_TYPE_ASSEMBLY"}],"current_scientific_name":{"authority":"Hayashi et al. 1999","name":"Hydrogenophilus thermoluteolus"},"genomic_moltype":"dsDNA","group_name":"proteobacteria","has_type_material":true,"parents":[1,131567,2,1224,2008785,119069,206349,70774],"rank":"SPECIES","tax_id":297}}],"total_count": 1}
 ```
 
 #### datasets download taxonomy taxon
 ```
-/work/ncbi_datasets$ ls -alF ncbi_dataset/data/
+$ datasets download taxonomy taxon "Hydrogenophilus thermoluteolus" --filename Hthermoluteolus.zip
+Downloading: Hthermoluteolus.zip    2.46kB valid zip structure -- files not checked
+Validating package [================================================] 100% 4/4
+$ unzip Hthermoluteolus.zip
+...
+$ ls -alF ncbi_dataset/data/
 合計 20
 drwxrwxr-x 2 chalkless chalkless 4096  6月 28 11:59 ./
 drwxrwxr-x 3 chalkless chalkless 4096  6月 28 11:59 ../
