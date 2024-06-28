@@ -2,7 +2,7 @@
 - https://www.ncbi.nlm.nih.gov/datasets/
 - NCBI GenomeとNCBI AssemblyにNCBI Taxonomyをくっつけたりしてできたサイト
 - NCBI Genomeのサイトのキャプチャー（Assembly、Genome　（GenBank, RefSeq） のイメージ）
-  ![../images/ncbi_genome.capture.Hthermo.png]()
+  ![NCBI Genome画面](../images/ncbi_genome.capture.Hthermo.png)
 - アナウンス：https://ncbiinsights.ncbi.nlm.nih.gov/2023/10/18/ncbi-datasets-access-sequence-data/
 
 ## Command-line tool
