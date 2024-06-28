@@ -49,7 +49,7 @@ $ cat ncbi_dataset/data/assembly_data_report.jsonl
 ```
 
 - 何も指定しないとncbi_dataset.zipがダウンロードされる。変更するには`--filename string`をつける(例：--filename datasets.GCF_003574215.zip)。でも展開するとncbi_datasetsディレクトリが作成されるので上書き注意
-- .jsonl ファイルはdataformatコマンドでタブ区切りに変換できる
+- .jsonl ファイルはdataformatコマンドでタブ区切りに変換できる（例：[example.assembly_data_report.tab](example.assembly_data_report.tab)） 
 ```
 $ dataformat tsv genome --inputfile assembly_data_report.jsonl
 Assembly Accession      ANI Best ANI match ANI  ANI Best ANI match Assembly     ANI Best ANI match Assembly Coverage    ANI Best ANI match Type Category        ANI Best ANI matc...
@@ -61,7 +61,7 @@ GCF_003574215.1 93.07   GCA_019049855.1 86.47   type    Hydrogenophilus thiooxid
 ...
 ```
 - zipを展開しなくても変換は可能：`$ dataformat tsv genome --package GCF_003574215.datasets.zip`
-- 目的の列だけ出力する場合は`--fields strings`を使う。stringsにはカラム名をカンマ区切りで指定する
+- 目的の列だけ出力する場合は`--fields strings`を使う。stringsにはカラム名をカンマ区切りで指定する ... ヘルプ：[help.dataformat.tsv.genome.txt](help.dataformat.tsv.genome.txt)
 
 #### datasets summary taxon
 ```
