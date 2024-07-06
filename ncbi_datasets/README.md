@@ -29,10 +29,37 @@ $ chmod +x datasets dataformat
 ### 使ってみる
 - それぞれ コマンドだけ（datasets　だけ）打ってもヘルプが出るし、datasets summary --help とやるともう少し細かいヘルプが出る
 #### datasets summary genome
+- datasets summary genome accession
 ```
 $ datasets summary genome accession GCF_003574215
-{"reports": [{"accession":"GCF_003574215.1","annotation_info":{"method":"Best-placed reference protein set; GeneMarkS-2+","name":"NCBI Prokaryotic Genome Annotation Pipeline (PGAP)","pipeline":"NCBI Prokaryotic Genome Annotation Pipeline (PGAP)","provider":"NCBI RefSeq","release_date":"2024-02-13","software_version":"6.6","stats":{"gene_counts":{"non_coding":62,"protein_coding":2148,"pseudogene":21,"total":2231}}},"assembly_info":{"assembly_level":"Complete Genome","assembly_method":"Velvet v. 1.2.08","assembly_name":"ASM357421v1","assembly_status":"current","assembly_type":"haploid","bioproject_accession":"PRJDB6915","bioproject_lineage":[{"bioprojects":[{"accession":"PRJDB6915","title":"Hydrogenophilus thermoluteolus TH-1 Genome sequencing"}]}],"biosample":{"accession":"SAMD00115820","attributes":[{"name":"sample_name","value":"H_thermoluteolus"},{"name":"collection_date","value":"missing"},{"name":"env_broad_scale","value":"not applicable"},{"name":"env_local_scale","value":"hot spring"},{"name":"env_medium","value":"soil around hot spring"},{"name":"geo_loc_name","value":"Japan:Shizuoka, Izu peninsula"},{"name":"isol_growth_condt","value":"http://www.nbrc.nite.go.jp/NBRC2/NBRCCatalogueDetailServlet?ID=NBRC\u0026CAT=00014978"},{"name":"lat_lon","value":"missing"},{"name":"locus_tag_prefix","value":"HPTL"},{"name":"num_replicons","value":"missing"},{"name":"project_name","value":"Hydrogenophilus thermoluteolus TH-1 genome sequencing"},{"name":"ref_biomaterial","value":"missing"},{"name":"strain","value":"TH-1"},{"name":"type-material","value":"type strain of Hydrogenophilus thermoluteolus"}],"bioprojects":[{"accession":"PRJDB6915"}],"collection_date":"missing","description":{"comment":"Keywords: GSC:MIxS;MIGS:6.0","organism":{"organism_name":"Hydrogenophilus thermoluteolus","tax_id":297},"title":"Hydrogenophilus thermoluteolus strain TH-1"},"geo_loc_name":"Japan:Shizuoka, Izu peninsula","last_updated":"2022-04-05T05:55:03.000","lat_lon":"missing","models":["MIGS.ba"],"owner":{"name":"Department of Biotechnology, The University of Tokyo"},"package":"MIGS.ba.6.0","project_name":"Hydrogenophilus thermoluteolus TH-1 genome sequencing","publication_date":"2018-06-20T00:00:00.000","sample_name":"H_thermoluteolus","status":{"status":"live","when":"2018-06-26T01:00:56.673"},"strain":"TH-1","submission_date":"2018-06-26T01:00:56.670"},"paired_assembly":{"accession":"GCA_003574215.1","annotation_name":"Annotation submitted by Department of Biotechnology, The University of Tokyo","status":"current"},"refseq_category":"representative genome","release_date":"2018-06-21","sequencing_tech":"454 GS FLX Titanium; ABI 3730","submitter":"Department of Biotechnology, The University of Tokyo"},"assembly_stats":{"contig_l50":1,"contig_n50":2223143,"gc_count":"1410666","gc_percent":61.5,"genome_coverage":"42.0x","number_of_component_sequences":2,"number_of_contigs":2,"number_of_scaffolds":2,"scaffold_l50":1,"scaffold_n50":2223143,"total_number_of_chromosomes":2,"total_sequence_length":"2288780","total_ungapped_length":"2288780"},"average_nucleotide_identity":{"best_ani_match":{"ani":93.07,"assembly":"GCA_019049855.1","assembly_coverage":86.47,"category":"type","organism_name":"Hydrogenophilus thiooxidans","type_assembly_coverage":85.5},"category":"type","comment":"Assembly is the type_strain, mismatch is within genus and expected","match_status":"below_threshold_mismatch","submitted_organism":"Hydrogenophilus thermoluteolus","submitted_species":"Hydrogenophilus thermoluteolus","taxonomy_check_status":"OK"},"checkm_info":{"checkm_marker_set":"Hydrogenophilaceae","checkm_marker_set_rank":"family","checkm_species_tax_id":297,"checkm_version":"v1.2.2","completeness":70.72,"completeness_percentile":100,"contamination":8.24},"current_accession":"GCF_003574215.1","organism":{"infraspecific_names":{"strain":"TH-1"},"organism_name":"Hydrogenophilus thermoluteolus","tax_id":297},"paired_accession":"GCA_003574215.1","source_database":"SOURCE_DATABASE_REFSEQ","type_material":{"type_display_text":"assembly from type material","type_label":"TYPE_MATERIAL"}}],"total_count": 1}
+{"reports": [{"accession":"GCF_003574215.1","annotation_info":{...
 ```
+詳細は[example.summary_genome_accesssion.json](example.summary_genome_accesssion.json)
+
+- datasets summary genome taxon
+```
+$ datasets summary genome taxon 297
+{"reports": [{"accession":"GCF_003574215.1","annotation_info":{"method":...
+```
+詳細は[example.summary_genome_taxon.json](example.summary_genome_taxon.json)
+
+種名などでも行けるが、他のものに当たるとどれ? とエラーが出るので、Taxon IDが確実（か、これでTaxon IDを確認してから）。" "で囲っているけど効いていない気もする
+```
+$ datasets summary genome taxon "Hydrogenophilus themoluteolus"
+Error: The taxonomy name 'Hydrogenophilus themoluteolus' is not exact. Try using one of the suggested taxids:
+unclassified Hydrogenophilus (no-rank, taxid: 2640443)
+Desulfobacter hydrogenophilus (species, taxid: 2291)
+Geobacter hydrogenophilus (species, taxid: 40983)
+Hydrogenobacter hydrogenophilus (species, taxid: 35835)
+Hydrogenophilus (genus, taxid: 70774)
+Hydrogenophilus sp. (species, taxid: 2871696)
+Hydrogenophilus thermoluteolus (species, taxid: 297)
+Hydrogenophilus thiooxidans (species, taxid: 2820326)
+Hydrogenophilus phage vB_LmoS_C996 (species, taxid: 2863842)
+
+Use datasets summary genome taxon <command> --help for detailed help about a command.
+```
+
 
 #### datasets download
 ```
