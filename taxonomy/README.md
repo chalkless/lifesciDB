@@ -144,6 +144,42 @@ Full name lineage file fields:
         lineage                                 -- sequence of sncestor names separated by semicolon ';' denoting nodes' ancestors starting from the most distant one and ending with the immediate one
 ```
 
+## 生物名の重複
+- 戯れにどのくらいの重複があるのか確認してみた。(2024/9/18付データ)
+```
+$ cut -f 2 rankedlineage.tab | sort | uniq -c  | sort -rn | less
+   6444 environmental samples
+      3 clinical samples
+      3 Nomia
+      3 Morganella
+      3 Mansonia
+      3 Leptonema
+      3 Lawsonia
+      3 Drosophila
+      3 Diplura
+      3 Dinema
+      3 Ctenophora
+      3 Cavernicola
+      3 Baileya
+      3 Appendicularia
+      3 Anopheles
+      2 unclassified Polyarthra
+      2 unclassified Nitrospira
+      2 unclassified Hygrophila
+      2 mixed libraries
+      2 mixed EST libraries
+      2 Zonaria
+      2 Zilla
+      2 Zeugodacus
+      ...
+```
 
+- `2 Drosophila incertae sedis` というのが出てくる。「incertae sedis = 分類学上の位置が不明」。分類学で、上位分類群が決まっていない場合に使われる。たとえば、ある目がいくつかの科に分類されているが科が未定の属がある場合、目の下に直接その属を書き、incertae sedis と添える（[Wikipedia](https://ja.wikipedia.org/wiki/Incertae_sedis)）。
 
-
+```
+$ cut -f 2 rankedlineage.tab | sort | uniq -c  | sort -rn | perl -lane '$_ =~ s/^\s+//; $_ =~ /(\d+)/; print $1' | uniq -c
+      1 6444
+     14 3
+   1232 2
+2602929 1
+```
