@@ -20,7 +20,9 @@ lpsn_gss_2024-04-08.xls: UTF-8 Unicode text, with very long lines, with CRLF lin
 ```
 - 人名が入っているので文字コードが特殊と伝説で言われているが、途中でExcelで開いたりして確認しているからかもしれない。
 
-
+## API
+- https://api.lpsn.dsmz.de/?pk_vid=0c1c9ad3794908d01733845731c387c3
+- https://lpsn.dsmz.de/text/lpsn-api
 
 
 
