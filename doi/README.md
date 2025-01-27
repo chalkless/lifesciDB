@@ -100,7 +100,7 @@
 ```
 
 ## doi.org
-- [https://citation.doi.org/api-docs.html]
+- https://citation.doi.org/api-docs.html
 ```
 $ curl https://citation.doi.org/metadata?doi=10.1145/2783446.2783605
 ```
