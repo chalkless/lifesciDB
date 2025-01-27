@@ -6,7 +6,9 @@
   - https://doi.org/10.3389/fevo.2022.966605 → https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2022.966605/full
  
 # DOIからの書誌情報の取得
-- [doi2biblio.py]
+- doi2biblio.py
+
+## refindit.org
 - https://refindit.org/ のAPIを用いている
 - 返ってくるデータの中身の例
 ```
@@ -95,4 +97,10 @@
           'review of experimental studies.',
  'volume': '194',
  'year': '2024'}
+```
+
+## doi.org
+- [https://citation.doi.org/api-docs.html]
+```
+$ curl https://citation.doi.org/metadata?doi=10.1145/2783446.2783605
 ```
