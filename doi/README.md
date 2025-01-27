@@ -104,3 +104,4 @@
 ```
 $ curl https://citation.doi.org/metadata?doi=10.1145/2783446.2783605
 ```
+- ここも参考になるかもしれない：https://citation.doi.org/docs.html
