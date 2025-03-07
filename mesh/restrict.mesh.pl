@@ -3,6 +3,7 @@
 # restrict.mesh.pl
 # Nakazato T.
 # '23-02-16-Thu.    Ver. 0.1
+# '25-03-07-Fri.    Ver. 0.11
 
 use Getopt::Long 'GetOptions';
 
@@ -21,7 +22,7 @@ while( defined( $line_idx = <IDX> )) {
 
     my ($mid, $mterm, $mtree) = split(/\t/, $line_idx);
 
-    $m_term2tree{$mterm} = $mtree;
+    $m_term2tree{lc($mterm)} = $mtree;
 }
 close(IDX);
 
@@ -32,7 +33,7 @@ while (defined ($line_in = <IN>)) {
     @ele = split(/\t/, $line_in);
 
     $mterm_tgt = $ele[$column];
-    $mtree_tgt = $m_term2tree{$mterm_tgt};
+    $mtree_tgt = $m_term2tree{lc($mterm_tgt)};
 
     print $line_in."\n" if ($mtree_tgt =~ /$category/);
 }
