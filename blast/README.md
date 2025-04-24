@@ -14,7 +14,7 @@ $ apt install ncbi-blast+
 ```
 
 ### conda
-- 2025年4月現在 2.16が入るようだ
+- 2025年4月現在 2.16.0が入るようだ
 ```
 # BLAST用に仮想環境をつくるなら
 $ conda create -n blast
