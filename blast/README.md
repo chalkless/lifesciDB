@@ -1,8 +1,17 @@
 # BLAST
 
 ## インストール
+### NCBIのサイトからダウンロード
+- https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
+- Win版、Mac版、Linux版、ソースなど
+- 2025年4月現在 2.16.0
+
 ### apt
 - Ubuntu など
+- 2025年4月現在 2.12.0
+```
+$ apt install ncbi-blast+
+```
 
 ### conda
 - 2025年4月現在 2.16が入るようだ
