@@ -1,8 +1,29 @@
-* BLAST
+# BLAST
 
-  * BLAST かける
+## インストール
+### apt
+- Ubuntu など
 
-- 実行
+### conda
+- 2025年4月現在 2.16が入るようだ
+```
+# BLAST用に仮想環境をつくるなら
+$ conda create -n blast
+$ conda activate blast
+
+# 実際のインストール（プロンプトの部分 (blast) $ は気にしなくていい）
+(blast) $ conda install bioconda::blast
+
+# 試しに動作確認
+$ blastn
+BLAST query/options error: Either a BLAST database or subject sequence(s) must be specified
+Please refer to the BLAST+ user manual.
+（ミスっていると コマンドが見つかりません と出てくる）
+```
+
+
+## BLASTの実行
+
 ```
 $ blastp -query query.fasta -db blast.db -num_threads 8 -max_target_seqs 3 -outfmt 6 | tee blast.rslt.tab
 ```
@@ -25,10 +46,9 @@ $ blastp -query query.fasta -db blast.db -num_threads 8 -max_target_seqs 3 -outf
 12. bit score
 ```
 
+## BLASTのデータベース作成
 
-  * BLASTのデータベース作成など
 
-- DB作成
 ```
 $ makeblastdb -in original.fasta -out blast.dbname -dbtype [nucl|prot] -hash_index -parse_seqids
 ```
@@ -53,7 +73,4 @@ $ blastdbcmd -db blast.db -entry_batch target.ids.txt | tee target.fasta
     $name_out =~ s/OS=(.*)//;
     $taxon = $1;
 ```
-
-
-
 
