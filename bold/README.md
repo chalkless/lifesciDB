@@ -17,4 +17,22 @@
 - JSONファイルは各列の解説：https://github.com/chalkless/lifesciDB/blob/master/bold/BOLD_Public.23-May-2025.datapackage.json
 - 上記 LATEST ページにも同じ解説があるが、実際にデータ加工しようとすると列番号が重要なので上のJSONを見るのが便利
 
+## データ利用例
+- 昆虫だけに絞り込んで、必要なところだけをファイルに書き出す
+```
+$ perl -F"\t" -lane 'print $_ if $F[15] eq "Insecta"' /data/bold/250530/datapackage/BOLD_Public.23-May-2025.tsv | cut -f 1,2,4,5,6,8,13,69,71,74 > bold.250523.insect.slim.tab
+```
+
+```
+ 1	processid
+ 2	sampleid
+ 4	museumid
+ 5  record_id
+ 6	specimenid
+ 8  bin_uri
+13  taxid
+69  insdc_acs
+71	markercode    <- gene name
+74  sequence_run_site  <- "Mined from GenBank, NCBI"はここに
+```
 
