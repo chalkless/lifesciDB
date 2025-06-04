@@ -27,12 +27,12 @@ $ perl -F"\t" -lane 'print $_ if $F[15] eq "Insecta"' /data/bold/250530/datapack
  1	processid
  2	sampleid
  4	museumid
- 5  record_id
- 6  specimenid
- 8  bin_uri
-13  taxid
-69  insdc_acs
+ 5	record_id
+ 6	specimenid
+ 8	bin_uri
+13	taxid
+69	insdc_acs
 71	markercode    <- gene name
-74  sequence_run_site  <- "Mined from GenBank, NCBI"はここに
+74	sequence_run_site  <- "Mined from GenBank, NCBI"はここに
 ```
 
