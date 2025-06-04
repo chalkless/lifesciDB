@@ -28,7 +28,7 @@ $ perl -F"\t" -lane 'print $_ if $F[15] eq "Insecta"' /data/bold/250530/datapack
  2	sampleid
  4	museumid
  5  record_id
- 6	specimenid
+ 6  specimenid
  8  bin_uri
 13  taxid
 69  insdc_acs
