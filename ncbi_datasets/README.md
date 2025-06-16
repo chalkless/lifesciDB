@@ -6,7 +6,7 @@
 - アナウンス：https://ncbiinsights.ncbi.nlm.nih.gov/2023/10/18/ncbi-datasets-access-sequence-data/
 
 ## Command-line tool
-- https://www.ncbi.nlm.nih.gov/datasets/docs/v2/download-and-install/
+- https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/
 - 上記サイトから説明書き
 
 > The NCBI Datasets command-line tools (CLI) are datasets and dataformat.
