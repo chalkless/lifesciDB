@@ -33,12 +33,14 @@ trad. (traditional)とは、歴々 収集されてきた塩基配列・アミノ
 ```
 # lftp編
 $ cd /data
-$ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob "gbpri*" --include-glob "gbrod*" genbank ./genbank; quit' ftp.ncbi.nlm.nih.gov
+$ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob "gbpri*" --include-glob "gbrod*" genbank/ ./; quit' ftp.ncbi.nlm.nih.gov
 ```
-- リモートとローカルが同じ名前でかつ/で終わらない時だけ中身がコピーされ、他はgenbankディレクトリができてその中にコピーされるので、1つ上に移動してlftpをかけている（ローカル側が/で終わらない時は中身がコピーされる）
+- FTPサイトのURLは`ftp.ncbi.nih.gov/genbank/`であるので、末尾にドメイン部分、ホスト側の設定を`genbank/`としている。最後の/を忘れないこと。忘れるとgenbankディレクトリが作られてコピーされる
+- ローカル側もディレクトリ指定すると（つまり/で終わる形にすると）当該ディレクトリにファイルがコピーされる
 - サブディレクトリも同期しようとするので -r　(--no-recursion) つける
 - `--just-print` をつけると画面表示だけされる
 - parallel で並列コピーされるし、経験的にこちらが段違いで早い
+- PRI、ROD、MAM、VRT、INV、PLN、BCTで1.6TB程度（2025年9月現在）
 
 
 ```
