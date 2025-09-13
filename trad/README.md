@@ -40,7 +40,7 @@ $ lftp -e 'mirror -r --parallel=3 --delete --only-newer --verbose --include-glob
 - サブディレクトリも同期しようとするので -r　(--no-recursion) つける
 - `--just-print` をつけると画面表示だけされる
 - parallel で並列コピーされるし、経験的にこちらが段違いで早い
-- PRI、ROD、MAM、VRT、INV、PLN、BCTで1.6TB程度（2025年9月現在）
+- PRI、ROD、MAM、VRT、INV、PLN、BCTで1.9TB程度（2025年9月現在。gzip圧縮済）
 
 
 ```
