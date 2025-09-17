@@ -36,7 +36,8 @@ Absicoccus			Shin Y, Paek J, Kim H, Kook JK, Kim JS, Kim SH, Chang YH. Absicoccu
 ```
 
 ## API
-- https://api.lpsn.dsmz.de/?pk_vid=0c1c9ad3794908d01733845731c387c3
+- https://api.lpsn.dsmz.de/
+  - 実際はアクセスすると、後ろにセッションIDみたいなものがつく：（例）https://api.lpsn.dsmz.de/?pk_vid=0c1c9ad3794908d01733845731c387c3
 - https://lpsn.dsmz.de/text/lpsn-api
 
 
