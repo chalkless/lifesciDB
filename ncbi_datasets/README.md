@@ -19,12 +19,21 @@
 ![NCBI Datasets tools](../images/datasets_schema_taxonomy.svg)
 
 ### Download
-- 上のサイトを見よ
+- condaを利用する場合
+```
+conda install -c conda-forge ncbi-datasets-cli
+```
+```
+# このように書いてもよい
+conda install conda-forge::ncbi-datasets-cli
+```
+- ソースをダウンロードする場合
 ```
 $ curl -o datasets 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/datasets'
 $ curl -o dataformat 'https://ftp.ncbi.nlm.nih.gov/pub/datasets/command-line/v2/linux-amd64/dataformat'
 $ chmod +x datasets dataformat
 ```
+- 詳細と最新情報：https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/
 
 ### 使ってみる
 - それぞれ コマンドだけ（datasets　だけ）打ってもヘルプが出るし、datasets summary --help とやるともう少し細かいヘルプが出る
