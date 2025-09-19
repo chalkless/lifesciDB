@@ -58,3 +58,18 @@ md5checksums.txt                                                        2024-02-
 uncompressed_checksums.txt                                              2024-06-12 01:58  698   
 ```
 
+## ゲノムの統計値を得る
+- 数える程度ならウェブで結果を見てもいいし、NCBI Datasets（[使い方のメモ書き](https://github.com/chalkless/lifesciDB/tree/master/ncbi_datasets)）を見てもよい。
+- 大量に情報を得たい時はNCBI GenomeのFTPサイトから表をダウンロードしてparseするのがいいと思う。
+```
+# Bacteriaの場合
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt
+https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
+```
+- 中身
+```
+$ grep 003574215 assembly_summary.txt 
+GCF_003574215.1 PRJNA224116     SAMD00115820    na      reference genome        297 297      Hydrogenophilus thermoluteolus  strain=TH-1     na      latest  Complete Genome      Major   Full    2018-06-21      ASM357421v1     Department of Biotechnology, The University of Tokyo GCA_003574215.1 identical       https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1 na      assembly from type material  na      haploid bacteria        2288780 2288780 61.500000       2       2   2
+        NCBI RefSeq     GCF_003574215.1-RS_2024_12_13   2024-12-13      2242    214562       na
+```
+- 中身の説明：[https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt)
