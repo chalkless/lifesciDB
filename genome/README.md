@@ -88,7 +88,7 @@ GCF_003574215.1 PRJNA224116     SAMD00115820    na      reference genome        
 | 16 | asm_name | ASM357421v1 |  |
 | 18 | gbrs_paired_asm | GCA_003574215.1 | GenBank/RefSeq paired assembly。RefSeqに対応するGenBankのID。対応がない場合はna |
 | 19 | paired_asm_comp | identical | identical/different/na |
-| 20 | ftp_path | https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1 |  |
+| 20 | ftp_path | [リンク](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1) |  |
 | 26 | genome_size | 2288780 |  |
 | 27 | genome_size_ungapped | 2288780 |  |
 | 28 | gc_percent | 61.500000 |  |
