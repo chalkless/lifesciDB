@@ -69,7 +69,40 @@ https://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 - 中身
 ```
 $ grep 003574215 assembly_summary.txt 
-GCF_003574215.1 PRJNA224116     SAMD00115820    na      reference genome        297 297      Hydrogenophilus thermoluteolus  strain=TH-1     na      latest  Complete Genome      Major   Full    2018-06-21      ASM357421v1     Department of Biotechnology, The University of Tokyo GCA_003574215.1 identical       https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1 na      assembly from type material  na      haploid bacteria        2288780 2288780 61.500000       2       2   2
-        NCBI RefSeq     GCF_003574215.1-RS_2024_12_13   2024-12-13      2242    214562       na
+GCF_003574215.1 PRJNA224116     SAMD00115820    na      reference genome        297 297      Hydrogenophilus thermoluteolus  strain=TH-1     na      latest  Complete Genome      Major   Full    2018-06-21      ASM357421v1     Department of Biotechnology, The University of Tokyo GCA_003574215.1 identical       https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1 na      assembly from type material  na      haploid bacteria        2288780 2288780 61.500000       2       2   2        NCBI RefSeq     GCF_003574215.1-RS_2024_12_13   2024-12-13      2242    2145    62       na
 ```
 - 中身の説明：[https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt](https://ftp.ncbi.nlm.nih.gov/genomes/README_assembly_summary.txt)
+   - 使いそうなところ
+
+| 列数 | 項目名 | 実例 | コメント |
+| ------------- | ------------- | ------------- | ------------- |
+| 1 | assembly_accession | GCF_003574215.1 | |
+| 5 | refseq_category | reference genome | 種のreferenceのときは”reference genome”、そうでないときはna |
+| 6 | taxid | 297 |  |
+| 7 | species_taxid | 297 |  |
+| 8 | organism_name | Hydrogenophilus thermoluteolus |  |
+| 9 | infraspecific_name | strain=TH-1 | ゲノムが読まれたstrain, breed, cultivar, ecotype。情報がない時は空白 |
+| 11 | version_status | latest | latest/replaced/suppressed |
+| 12 | assembly_level | Complete Genome | Complete Genome/Chromosome/Scaffold/Contig 詳細は説明を見よ |
+| 15 | seq_rel_date | 2018-06-21 |  |
+| 16 | asm_name | ASM357421v1 |  |
+| 18 | gbrs_paired_asm | GCA_003574215.1 | GenBank/RefSeq paired assembly。RefSeqに対応するGenBankのID。対応がない場合はna |
+| 19 | paired_asm_comp | identical | identical/different/na |
+| 20 | ftp_path | https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/574/215/GCF_003574215.1_ASM357421v1 |  |
+| 26 | genome_size | 2288780 |  |
+| 27 | genome_size_ungapped | 2288780 |  |
+| 28 | gc_percent | 61.500000 |  |
+| 29 | replicon_count | 2 | chromosomes, organelle genomes, plasmidsの総数 |
+| 30 | scaffold_count | 2 |  |
+| 31 | contig_count | 2 |  |
+| 35 | total_gene_count | 2242 |  |
+| 36 | protein_coding_gene_count | 2145 |  |
+| 37 | non_coding_gene_count | 62 |  |
+| 38 | pubmed_id | na | 複数の場合はカンマ区切り |
+
+※ 列数は1スタート
+
+
+
+
+
