@@ -21,6 +21,7 @@ cd ./alphafold
 conda install aria2
 ```
 ### データベース類のダウンロード
+- https://qiita.com/Ag_smith/items/7c76438906b3f665af38 に詳しい
 - `scripts/download_all_data.sh`を実行する。
 ```
 scripts/download_all_data.sh <DOWNLOAD_DIR>
@@ -32,6 +33,23 @@ scripts/download_all_data.sh <DOWNLOAD_DIR>
 ```
 scripts/download_all_data.sh <DOWNLOAD_DIR> reduced_dbs
 ```
-- 
+- この間に必要なモジュールとかのインストールができる
+
+### 必要なモジュールのインストール
+- `requrements.txt`に必要なモジュール類が書いてある
+```
+absl-py==1.0.0
+biopython==1.79
+dm-haiku==0.0.12
+docker==5.0.0
+jax==0.4.26
+matplotlib==3.8.0
+ml-collections==0.1.0
+numpy==1.24.3
+pytest<8.5.0
+scipy==1.11.1
+setuptools<72.0.0
+tensorflow-cpu==2.16.1
+```
 
 
