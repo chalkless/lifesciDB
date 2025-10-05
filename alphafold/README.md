@@ -2,11 +2,7 @@
 ## インストール
 ### GPUまわりのセットアップ
 - https://github.com/chalkless/misc/blob/main/doc/nvidiaSetup.md を見よ
-### インストール場所の確保（conda環境）
-```
-conda create -n alphafold
-conda activate alphafold
-```
+
 ### ソース等のダウンロード
 - 場所が変わっている:https://github.com/deepmind/alphafold → https://github.com/google-deepmind/alphafold
 - とはいえ、リダイレクトされるのであまり気にしなくて良さそう（2025年10月現在）
@@ -15,6 +11,15 @@ cd （alphafoldディレクトリを作る場所）
 git clone https://github.com/deepmind/alphafold.git
 cd ./alphafold
 ```
+
+### インストール場所の確保（conda環境）
+```
+conda create -n alphafold python=3.11
+conda activate alphafold
+```
+- docker/Dockerfile を見るに、Pythonのバージョンの3.11を要求しているようなので3.11で構築する
+
+### ダウンロードツールaria2のインストール
 - https://github.com/google-deepmind/alphafold を見ながら
 - aria2を入れろ、とのこと（ダウンロードのプログラム）
 ```
@@ -51,5 +56,8 @@ scipy==1.11.1
 setuptools<72.0.0
 tensorflow-cpu==2.16.1
 ```
-
-
+- docker/Dockerfileの中を見るとpipで入れるように書いてあるので一応は従ってみる
+```
+pip3 install -r requirements.txt
+```
+- 本来、condaとpipは混ぜて使ってはいけないので注意
