@@ -18,3 +18,30 @@
 - これの他に、MeSHの階層構造をまとめたファイルがある
   - https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/meshtrees/ に置かれている（さきほどのASCII形式のファイル群の1つ上の階層からたどれる）
   - mtrees2025.bin：用語と階層構造の場所を記載したファイル。2025年版は2.6MB
+
+## データ例
+- MeSH（生物種データ）
+```
+*NEWRECORD
+RECTYPE = D
+MH = Bacillus subtilis      ← 用語
+AQ = CH CL CY DE EN GD GE IM IP ME PH PY RE UL VI
+PRINT ENTRY = Natto Bacteria|T007|NON|NRW|NLM (2004)|030507|abcdef
+ENTRY = Bacillus subtilis (natto)|T007|NON|NRW|NLM (2004)|030507|abcdef    ← Entry Term。この語が来たら、当該MeSH用語に変換される。別の表現と思えばよい。
+ENTRY = Bacillus subtilis subsp. natto|T007|NRW|NLM (2020)|191001|abdef
+ENTRY = Bacillus subtilis var. natto|T007|NON|NRW|NLM (2004)|030507|abcdef
+MN = B03.300.390.400.158.218.725    ← Tree ID。用語が階層構造になっているので、その親子関係を表す。複数可。親の用語は末尾の.XXXを削ったID
+MN = B03.353.500.100.218.725
+MN = B03.510.100.100.218.725
+MN = B03.510.415.400.158.218.725
+MN = B03.510.460.410.158.218.725
+MH_TH = NLM (1966)
+ST = T007
+RN = txid1423    ← Registry Number。この場合はここにTaxonomy IDが書かれている。今回はBacillus subtilisのTaxonomy ID
+RR = txid86029   ← こちらはRelated Registry Number。今回の場合は、Bacillus subtilis subsp. nattoのTaxonomy ID
+MS = A species of gram-positive bacteria that is a common soil and water saprophyte.
+LU = 20230522
+DC = 1
+DX = 19660101
+UI = D001412    ← 用語自体のID
+```
