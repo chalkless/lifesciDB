@@ -46,7 +46,18 @@ export NCBI_API_KEY=unique_api_key
   - BioPythonで指定するとき：https://github.com/chalkless/biopython_my/blob/master/biopyPubmed.md
 
 ## 使い方
-### PubMedからの文献のダウンロード
+### とりあえずesearch
+```
+$ esearch -db pubmed -query "Cupriavidus necator"
+<ENTREZ_DIRECT>
+  <Db>pubmed</Db>
+  <Count>1481</Count>
+  <Query>Cupriavidus necator</Query>
+  <Step>1</Step>
+  <Elapsed>1</Elapsed>
+</ENTREZ_DIRECT>
+```
+### esearch → efetchでPubMedからのXML形式で文献のダウンロード
 ```
 # 検索語を入れてその文献をXMLでダウンロード
 $ esearch -db pubmed -query "opsin gene conversion" | efetch -format xml
@@ -70,3 +81,13 @@ $ esearch -db pubmed -query "opsin gene conversion" | efetch -format xml
   </PubmedArticle>
 </PubmedArticleSet>
 ```
+- 見ての通り標準出力で出てくるのでファイルに保存するときは`> efetch.xml`などつけてファイルに保存する
+
+### XMLから必要な情報だけを抜き出す
+```
+$cat test.xml | xtract -pattern PubmedArticle -element MedlineCitation/PMID -block MeshHeading -element DescriptorName
+4882854 Bacteria        Bacterial Proteins      Electrophoresis Enzymes Eukaryota   Fungi    Isoenzymes      Proteins
+...
+```
+- xtractにXMLファイルを食わせて必要な情報だけタブ区切りで出すなどできる
+- 
