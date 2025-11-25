@@ -45,3 +45,25 @@ DC = 1
 DX = 19660101
 UI = D001412    ← 用語自体のID
 ```
+
+- mtreesXXXX.bin
+```
+ Body Regions;A01   ← Tree IDの若い順に並んでいる
+ Anatomic Landmarks;A01.111 ← 先頭に1文字空白文字が入っていることに注意
+ Breast;A01.236
+ Mammary Glands, Human;A01.236.249
+ Nipples;A01.236.500
+ Extremities;A01.378
+ Amputation Stumps;A01.378.100
+ ...
+ Bacillus subtilis;B03.300.390.400.158.218.725   ← 同じ用語がTreeの複数の箇所にあるので、当該Tree IDのところで複数回同じ用語が出てくる
+ ...
+ Bacillus subtilis;B03.353.500.100.218.725  ← よく見ると、末尾付近の数字が一緒だが、これはグラフで言うと途中で分かれてまた戻るDAGになっているから
+ ...
+ Bacillus subtilis;B03.510.100.100.218.725
+ ...
+ Bacillus subtilis;B03.510.415.400.158.218.725
+ ...
+ Bacillus subtilis;B03.510.460.410.158.218.725
+ ...
+```
