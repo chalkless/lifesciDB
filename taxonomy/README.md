@@ -183,3 +183,12 @@ $ cut -f 2 rankedlineage.tab | sort | uniq -c  | sort -rn | perl -lane '$_ =~ s/
    1232 2
 2602929 1
 ```
+
+## 細菌だけのNCBI Taxonomyを作る
+- 学名が重複したりするので名前だけで上位概念をたどったりするTreeを作るとナナフシのBacillusなどなどが出てきてデータがおかしくなる。
+- ということで、最初にNCBI TaxonomyをBacteriaだけに絞って処理するとそういうことは起きない。
+```
+perl -F"\t" -lane 'print $_ if (($F[1] eq "Bacteria") or ($F[9] eq "Bacteria"))' rankedlineage.tab > rankedlineage.bacteria.tab
+```
+- SuperkingdomがBacteriaのものか、Bacteriaそのもののエントリだけ選んでいる
+- `grep Bacteria rankedlineage.tab | grep -v Eukaryota` というのも試してみたが、Bacterial expression vectorやBacterial two-hybrid vectorもあって、意外と根深いと思ったのでした。
