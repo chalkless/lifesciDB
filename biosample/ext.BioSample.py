@@ -22,8 +22,16 @@ for biosample in root:
     id_bs = ""
     taxid = ""
     taxon_name = ""
+    strain = ""
     owner_name = ""
     title = ""
+    pubdate_tmp = ""
+
+#    <BioSample last_update="2022-04-05T17:24:38.000+09:00" publication_date="2014-04-07T00:00:00.000+09:00" access="public">
+    pubdate_tmp = biosample.get('publication_date')
+    pubdate_match = re.match(r"\d{4}-\d{2}-\d{2}", pubdate_tmp)
+    pubdate = pubdate_match.group()
+#    print(pubdate)
     
     for ele1 in biosample:
 
@@ -115,7 +123,7 @@ for biosample in root:
             status = status_attr.get('status')
             status_date = status_attr.get('when')
 #            print("\t".join([status, status_date]))
-    out = [id_bs, taxid, taxon_name, owner_name, title]
+    out = [id_bs, taxid, taxon_name, strain, pubdate, owner_name, title]
     print("\t".join([str(x) if x is not None else "" for x in out]))
 
     
