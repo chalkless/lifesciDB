@@ -84,13 +84,19 @@ $ makeblastdb -in original.fasta -out blast.dbname -dbtype [nucl|prot] -hash_ind
   - -parse_seqids: これをつけると配列名で検索できるようになる（後述）
 
 #### サブセットの配列作成：BLASTデータベースの応用編
+- あるIDの配列を取得する場合
+```
+blastdbcmd -db blast.db -entry id_name | tee id_name.fasta
+```
+- IDが複数あるのでIDリストのファイルを指定
 ```
 $ blastdbcmd -db blast.db -entry_batch target.ids.txt | tee target.fasta
 ```
 
+- 出力がFASTAでなくてIDとタイトルのタブ区切りにしたい
 ```
-（あるIDの配列を取得する場合）
-$ blastdbcmd -db blast.db -entry id_name | tee id_name.fasta
+blastdbcmd -db blast.db -entry id_name -outfmt "%a  %t"
 ```
+（詳細は`blastdbcmd -help`して-outfmtの項目をみよ）
 
 
