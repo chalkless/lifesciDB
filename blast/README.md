@@ -1,10 +1,10 @@
 # BLAST
 
-## インストール
+## プログラムのインストール
 ### NCBIのサイトからダウンロード
 - https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/
 - Win版、Mac版、Linux版、ソースなど
-- 2025年4月現在 2.16.0
+- 2026年5月現在 2.17.0
 
 ### apt
 - Ubuntu など
@@ -59,7 +59,21 @@ $ blastp -query query.fasta -db blast.db -num_threads 8 -max_target_seqs 3 -outf
 12. bit score
 ```
 
-## BLASTのデータベース作成
+### BLASTのタブ区切り結果で出力する内容を変更する
+- 上のコマンドで`-outfmt "6 std stitle"`のように変更する。
+- NCBIから落としてきたDBに対してBLASTする際に特に有効っぽい（ヒットした名前でDBの各ファイルをgrepしてもろくに出てこない）
+- stdは標準で出る内容（↑に書いてある）
+- stitleの部分は他にもいろいろある。`blastn -help`でもしてoutfmtの項目を見ればよい
+
+## データベースの準備
+### NCBIで配布しているものを手にいれる
+- https://ftp.ncbi.nlm.nih.gov/blast/db/ からダウンロードする
+- たとえば16S ribosomal RNAの配列なら16S_ribosomal_RNA.tar.gzをダウンロードする
+```
+wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz
+```
+
+### 自分でFASTAファイルを用意してデータベースを作成する
 ```
 $ makeblastdb -in original.fasta -out blast.dbname -dbtype [nucl|prot] -hash_index -parse_seqids
 ```
@@ -69,7 +83,7 @@ $ makeblastdb -in original.fasta -out blast.dbname -dbtype [nucl|prot] -hash_ind
   - -hash_index: 高速化のためにindex作成
   - -parse_seqids: これをつけると配列名で検索できるようになる（後述）
 
-## サブセットの配列作成：BLASTデータベースの応用編
+#### サブセットの配列作成：BLASTデータベースの応用編
 ```
 $ blastdbcmd -db blast.db -entry_batch target.ids.txt | tee target.fasta
 ```
