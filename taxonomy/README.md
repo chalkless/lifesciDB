@@ -1,7 +1,7 @@
 # NCBI Taxonomy
 
 ## データの取得
-- ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz を落として解凍する
+- https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz new_taxdump.tar.gz を落として解凍する
 - names.dmp と rankedlineage.dmp を使う
 - nodes.dmpも?
 - フォーマットが変態的
