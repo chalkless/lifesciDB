@@ -15,3 +15,14 @@ sudo apt install hmmer
 ```
 conda install hmmer
 ```
+
+## 自分でモチーフを作成する
+- アミノ酸配列のマルチFASTAファイルを用意する
+- マルチプルアライメントを取る
+```
+mafft input.fasta > aligned.fasta
+```
+- 独自ドメインを作成する
+```
+hmmbuild my_domain.hmm aligned.fasta
+```
