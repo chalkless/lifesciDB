@@ -72,6 +72,10 @@ $ blastp -query query.fasta -db blast.db -num_threads 8 -max_target_seqs 3 -outf
 ```
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz
 ```
+- 全部いい感じでカバーするDBとして、以前はnr/nt (non redundant) が使われていた。今はcore_ntを用いるようだ。（core_nt.XX.tar.gz。2026/7/20現在：XX=00～79）。数が多いので並列で取得した方がいいと思う。（～.tar.gz.md5ファイルもアップされているのでファイル名指定に注意）
+```
+lftp -e 'mirror -r --parallel=5 --delete --only-newer --verbose --include-glob "nt_core.*.tar.gz" blast/db/ ./; quit' ftp.ncbi.nlm.nih.gov
+```
 
 ### 自分でFASTAファイルを用意してデータベースを作成する
 ```
