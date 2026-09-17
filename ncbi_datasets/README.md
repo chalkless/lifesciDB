@@ -38,14 +38,25 @@ $ chmod +x datasets dataformat
 ### 使ってみる
 - それぞれ コマンドだけ（datasets　だけ）打ってもヘルプが出るし、datasets summary --help とやるともう少し細かいヘルプが出る
 #### datasets summary genome
-- datasets summary genome accession
+##### アクセッション番号から
+- 'datasets summary genome accession` を用いる
 ```
 $ datasets summary genome accession GCF_003574215
 {"reports": [{"accession":"GCF_003574215.1","annotation_info":{...
 ```
 詳細は[example.summary_genome_accesssion.json](example.summary_genome_accesssion.json)
 
-- datasets summary genome taxon
+- dataformatを用いてタブ区切りに直せる
+  - そのままではparseできないので、`--as-json-lines` つける
+  - `dataformat tsv genome` で受ける
+  - `--fields`で必要な列名を指定するのがよい。列名は`dataformat tsv genome --help`すると出てくる
+```
+$ datasets summary genome accession  GCF_000344805.1 --as-json-lines  | dataformat tsv genome --fields accession,organism-tax-id
+Assembly Accession      Organism Taxonomic ID
+GCF_000344805.1 1245469
+```
+
+##### datasets summary genome taxon
 ```
 $ datasets summary genome taxon 297
 {"reports": [{"accession":"GCF_003574215.1","annotation_info":{"method":...
