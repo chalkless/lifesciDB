@@ -49,14 +49,16 @@ $ datasets summary genome accession GCF_003574215
 - dataformatを用いてタブ区切りに直せる
   - そのままではparseできないので、`--as-json-lines` つける
   - `dataformat tsv genome` で受ける
-  - `--fields`で必要な列名を指定するのがよい。列名は`dataformat tsv genome --help`すると出てくる
+  - `--fields`で必要な列名を指定するのがよい。列名は`dataformat tsv genome --help`すると出てくる（出てくるもの：[help.dataformat.tsv.genome.txt](help.dataformat.tsv.genome.txt)）
 ```
 $ datasets summary genome accession  GCF_000344805.1 --as-json-lines  | dataformat tsv genome --fields accession,organism-tax-id
 Assembly Accession      Organism Taxonomic ID
 GCF_000344805.1 1245469
 ```
+  - headerがいらないときは`--elide-header`つける
 
-##### datasets summary genome taxon
+##### 生物種名から、というかTaxonomy IDから
+- `datasets summary genome taxon`
 ```
 $ datasets summary genome taxon 297
 {"reports": [{"accession":"GCF_003574215.1","annotation_info":{"method":...
