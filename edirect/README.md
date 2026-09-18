@@ -90,4 +90,11 @@ $cat test.xml | xtract -pattern PubmedArticle -element MedlineCitation/PMID -blo
 ...
 ```
 - xtractにXMLファイルを食わせて必要な情報だけタブ区切りで出すなどできる
-- 
+
+### GenBank からのダウンロード（GenBank形式）
+```
+esearch -db nuccore -query "JN278716.1" | efetch -format gb > JN278716.gb
+```
+- タンパク質エントリの場合は`nuccore`を`protein`にする
+- FASTA形式がほしかったら`gb`を`fasta`にする
+
